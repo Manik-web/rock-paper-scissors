@@ -1,0 +1,48 @@
+const getUserChoice = userInput => {
+  userInput = userInput.toLowerCase();
+  if(userInput === 'rock'||userInput === 'paper'||userInput==='scissors'){
+    return userInput;
+  } else{
+    console.log('Does not compute!');
+  }
+}
+
+const getComputerChoice = () =>{
+  var compChoice = Math.floor(Math.random()*3);
+
+  switch (compChoice){
+    case 0: compChoice = 'rock'; break;
+    case 1: compChoice = 'scissors';break;
+    case 2: compChoice = 'paper'; break;
+  }
+  console.log(`Computer has chosen: ${compChoice}`);
+  return compChoice;
+}
+
+
+const determineWinner = (userChoice, computerChoice) =>{
+  if(userChoice === computerChoice){
+    return 'Tie Game! Go again!';
+  } else if(userChoice === 'rock'){
+    if(computerChoice === 'scissors'){
+      return 'ROCK smashes scissors!! You Win'
+    } else{
+      return 'Paper wraps rock, you lose!'
+    }
+    }
+    else if(userChoice === 'scissors'){
+      if(computerChoice === 'paper'){
+        return 'SCISSORS slice through paper';
+      } else {return 'ROCK smashes scissors!! You Lost!'}
+      
+    } else if(userChoice === 'paper'){
+      if(computerChoice === 'rock'){
+        return 'PAPER wraps rock! You win!'
+      } else{ return 'Scissors cut through paper, you lost!';}
+    }
+}
+userChoice = getUserChoice('rock');
+console.log(`You selected :` + userChoice);
+
+const compChoice = getComputerChoice();
+console.log(determineWinner(userChoice, compChoice));
